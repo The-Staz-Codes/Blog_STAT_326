@@ -1,0 +1,312 @@
+---
+title: "Mini-Project #3"
+author: "Jason Stasio"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+**Simulation to Investigate Confidence Intervals**
+
+## Set up
+
+```{r, echo = TRUE}
+# Clear the environment
+rm(list = ls())
+
+# Load in packages 
+library(tidyverse)
+```
+
+## Settings for p close to 0.5 (p = 0.56)
+
+#### For large sample size (n = 500)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 500   # sample size
+p <- 0.56  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=500, p=0.56)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+#### For medium sample size (n = 50)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 50   # sample size
+p <- 0.56  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=50, p=0.56)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+#### For small sample size (n = 22)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 22   # sample size
+p <- 0.56  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=22, p=0.56)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+## Settings for p far from 0.5 (p = 0.20)
+
+#### For large sample size (n = 500)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 500   # sample size
+p <- 0.2  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=500, p=0.2)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+#### For medium sample size (n = 50)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 50   # sample size
+p <- 0.2  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=50, p=0.2)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+#### For small sample size (n = 22)
+
+```{r, echo = TRUE}
+# Run simulation
+n <- 22  # sample size
+p <- 0.2  # population proportion
+
+# Define function to generate sample proportions 
+generate_samp_prop <- function(n, p) {
+  
+  x <- rbinom(1, n, p) # randomly generate number of successes for the sample
+  
+  ## number of successes divided by sample size
+  phat <- x / n
+  
+  # Create 90% confidence interval 
+  lb <- phat - 1.645 * sqrt(phat * (1-phat) / n)
+  ub <- phat + 1.645 * sqrt(phat * (1-phat) / n)
+  
+  prop_df <- tibble(phat, lb, ub)
+  return(prop_df)
+}
+
+# How many CI's do we want to generate
+n_sim <- 5000
+
+prop_ci_df <- map(1:n_sim, 
+    \(i) generate_samp_prop(n=22, p=0.2)) |>
+  bind_rows()
+
+# Calculate average interval width and coverage rate
+prop_ci_df <- prop_ci_df |> mutate(ci_width = ub - lb, 
+                                   ci_cover_ind = if_else(p > lb & p < ub,
+                                                              true = 1,
+                                                              false = 0))
+prop_ci_df |> summarise(avg_width = mean(ci_width),
+                                      coverage_rate = mean(ci_cover_ind))
+```
+
+## Check Assumptions
+
+```{r}
+# Setting 1: p = 0.56, n = 500
+500 * 0.56
+500 * (1 - 0.56)
+# Result: 280 > 10 and 220 > 10, so large sample assumption holds
+
+# Setting 2: p = 0.56, n = 50
+50 * 0.56
+50 * (1 - 0.56)
+# Result: 28 > 10 and 22 > 10, so large sample assumption holds
+
+# Setting 3: p = 0.56, n = 22
+22 * 0.56
+22 * (1 - 0.56)
+# Result: 12.32 > 10, but 9.68 < 10, so large sample assumption is violated 
+
+# Setting 4: p = 0.20, n = 500
+500 * 0.20
+500 * (1 - 0.20)
+# Result: 100 > 10 and 400 > 10, so large sample assumption holds 
+
+# Setting 5: p = 0.20, n = 50
+50 * 0.20
+50 * (1 - 0.20)
+# Result: 10 = 10 and 40 > 10, so the large sample assumption is right on the line of being violated
+
+# Setting 6: p = 0.20, n = 22
+22 * 0.20
+22 * (1 - 0.20)
+# Result: 17.6 > 10, but 4.4 < 10, so large sample assumption is violated 
+```
+
+## Table of Results
+
+|            |               | $n = 22$ | $n = 50$ | $n = 500$ |
+|:----------:|:-------------:|:--------:|:--------:|:---------:|
+| $p = 0.56$ | Coverage Rate |  0.862   |  0.887   |   0.905   |
+| $p = 0.20$ | Coverage Rate |  0.839   |  0.869   |   0.897   |
+|            |               |          |          |           |
+| $p = 0.56$ | Average Width |  0.340   |  0.229   |  0.0730   |
+| $p = 0.20$ | Average Width |  0.270   |  0.183   |  0.0588   |
+
+: Table of Results {.striped .hover}
+
+## Summary
+
+The purpose of this project was to examine confidence intervals and coverage rates across 6 different settings to assess the importance of the "large sample size" assumption. The first three settings used a proportion value close to 0.5, p = 0.56, and varied the sample sizes, n = 500 (large), n = 50 (medium), and n = 22 (small). The trend observed for confidence intervals was that the average width decreased as sample size increased, 0.340 (n = 22) \> 0.229 (n = 50) \> 0.0730 (n = 500). Mathematically, this makes sense as the formula for confidence intervals involves subtracting or adding a quantity that is divided by the square root of the sample size, which shrinks as n increases. The trend observed for coverage rates is that the larger the sample size, the closer they were to the expected 0.90, since we were calculating a 90% confidence interval, \|0.90 - 0.862\| = 0.038 (n = 22) \> \|0.90 - 0.887\| = 0.013 (n = 50) \> \|0.90 - 0.905\| = 0.005 (n = 500).
+
+The latter three settings used a proportion value far from 0.5, p = 0.2, and varied the sample sizes by the same amounts as the first three settings, n = 500, n = 50, and n = 22. For confidence intervals, a similar trend was observed where average width decreased as sample size increased, 0.270 (n = 22) \> 0.183 (n = 50) \> 0.0588 (n = 500). A similar trend was also observed for coverage rates as larger sample sizes were closer to the expected coverage rate of 0.90, \|0.90 - 0.839\| = 0.061 (n = 22) \> \|0.90 - 0.869\| = 0.031 (n = 50) \> \|0.90 - 0.897\| = 0.003 (n = 500).
+
+Between the different proportion values, p = 0.20, on average, always produced shorter confidence interval widths than p = 0.56 across the different population sizes. This suggests that the maximum average width occurs when the proportion is in the middle (p = 0.5) and decreases as the proportion we are examining moves to the left (closer to p = 0) or right (closer to p = 1). In general, p = 0.56 seems to produce higher coverage rates that are closer to the expected 0.9, except in the n = 500 case, where p = 0.2 was closer (0.005 vs 0.003), but not by much in each case. Sample size had a far more noticeable impact on coverage rates, with the n = 22 case producing values far from the expected 0.9 (distances of 0.038 and 0.061) and the n = 500 case producing values close to the expected 0.9 (distances of 0.003 and 0.005). Note that the "large sample size" assumption was violated for n = 20 but held for n = 500. For the case of n = 50, the assumption was on the line of being violated for p = 0.2 (producing a distance of 0.031) and held for p = 0.56 (producing a distance of 0.013). These findings suggest that measuring confidence intervals and coverage rates is only reliable or meaningful if the "large sample size" assumption holds. We want our confidence intervals to be short and our coverage rates to be close to 0.9, which we observe for n = 500, somewhat for n = 50, but not for n = 22.

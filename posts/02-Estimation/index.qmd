@@ -1,0 +1,30 @@
+---
+title: "Mini-Project #2"
+author: "Jason Stasio"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+**Meaningful Story**
+
+The year is 2125 and almost everyone you pass on the street has opted to install some form of technological enhancement into their arms. This has allowed individuals to instantly acquire skills like playing the guitar or conquering challenging video game bosses without investing the time required to build them. The arms are programmable and perform designated movements for you.
+
+While miracles, these programmable arms are only as capable as the users operating them. One faithful user, subject 4150, realizes this as he hovers the input panel on his forearm over his puzzled face, illuminated by the screen’s glow. He glances away toward the three yellow balloons that shout their existence among a sea of blue balloons all affixed to a withered wooden wall. He must throw three darts and pop all three yellow balloons to win the ginormous stuffed capybara sitting atop the carnival stall. It’s lifeless and unbothered expression is oddly soothing.
+
+Unimpressed with his panicked composure, his date glances over his shoulder and sees his screen displays two estimators that can be used to predict the location of where his dart throw will land. She realizes that the location of his dart throw is a parameter she can visualize with her technologically enhanced eyes, a new development many people in society have yet to adopt. In fact, she can visualize a simulation of the dart landing as though it were really happening many times.
+
+She runs a simulation of subject 4150’s dart throws, which follow an exponential distribution, 1000 times for each of the yellow balloons. She treats each throw to one of the yellow balloons as a random variable and, assuming independence, decides to take random samples from each distribution, investigating the mean of where the dart lands. She takes several random samples of size 5 and plugs the results through each of the estimators on subject 4150’s screen.
+
+She finds that the first estimator, $\mu_{1}$, produces an estimate that is slightly biased toward the top left of where the true mean throw is. The second estimator, $\mu_{2}$, is unbiased but has a much larger variance or range of balloons popped. Realizing choosing which estimator to help him pop the yellow balloons is not as straightforward as she thought, she decides to lift some of the judgment she had cast on subject 4150.
+
+She turns to the mean square error metric to help assess which estimator subject 4150 should use. Despite being biased, $\mu_{1}$ produces a smaller mean square error and thus can be thought of as the better estimator, a prime example of the bias-variance trade-off.
+
+However, unsatisfied with her results and determined to take the stuffed capybara home, she realizes subject 4150’s enhancements are slightly outdated. She decides to utilize her brain enhancements, the data from her simulations, and the fact she knows subject 4150’s throws will follow an exponential dis- tribution to mentally derive a new estimator, $\mu_{3}$, using a maximum likelihood function.
+
+She then analyzes $\mu_{3}$ and finds it to be unbiased like $\mu_{2}$, but with a much lower variance. In fact, if she increases the sample size of her random samples, the variance converges to 0, meaning $\mu_{3}$ is also a consistent estimator. Of the estimators, $\mu_{3}$ proves to be the best as it produces the smallest mean square error, so she sends the information to subject 4150’s enhancements.
+
+The new estimator pops up on his screen and without questioning, he uses it as a guide for how he should program his darts throws to maximize his chances of hitting the yellow balloons. To his pleasant surprise, he pops all three of the yellow balloons flawlessly.
+
+The happy pair walk away from the stall, giant stuffed capybara in hand.
