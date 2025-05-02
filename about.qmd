@@ -1,6 +1,6 @@
 ---
-title: "About"
-image: profile.jpg
+title: "Mini-Project Reflection"
+image: paranormal.jpg
 about:
   template: jolla
   links:
@@ -15,4 +15,115 @@ about:
       href: https://github.com
 ---
 
-About this blog
+Throughout my mathematical statistics course, I was tasked with completing 
+mini-projects to reinforce understanding of each major topic. The first 
+mini-project covered sampling distributions. The goal was to write a statistical
+simulation of sampling distributions in R to investigate sample minimums and 
+maximums when taking samples of n=5 from normal, uniform, exponential, and beta 
+populations.This project marked the introduction to statistical simulation, 
+which frequently came up again in the course when covering topics including 
+bootstrap confidence intervals and Bayesian statistics (prior and posterior 
+distributions were simulated in R for the fourth mini-project). The bootstrap 
+distribution of a statistic is also related to the project as it represents an 
+approximation of the shape and spread of the sampling distribution of a 
+statistic of interest, such as minimums and maximums. 
+
+<hr>
+The second mini-project covered estimation, and I wrote a fictional story 
+containing key terms covered in the section, such as consistency and likelihood.
+One of the most applicable terms used was estimate, the numerical representation
+of the estimator for a particular sample. This term came up in almost every 
+topic in the course. In section 3, we discussed confidence intervals, which are 
+an interval estimate for an unknown parameter. In the third mini-project, we 
+used statistical simulation to find these interval estimates and investigated 
+how sample size affected their width. In section 4, we discussed a special kind 
+of estimate, the Bayes estimate of a parameter, which is the mean of the 
+posterior distribution. In the fourth mini-project, I used Bayes' estimate to 
+calculate the parameters of an informative prior distribution (a.k.a the 
+posterior distribution in the previous data collection setting). Finally, in 
+section 5, we discussed hypothesis testing, which involves making null and 
+alternative assertions about the estimate of a population of interest. 
+
+<hr>
+The third mini-project covered confidence intervals, and the goal was to assess 
+how sample sizes (small, medium, and large) and proportion values (close to 0.5
+and far from 0.5) affect coverage rate and average width. Statistical 
+simulation, a topic introduced in the first mini-project, was used. Effective
+confidence intervals should have a high coverage rate and a small average width, 
+since we want to accurately “capture” the parameter of interest inside. 
+Intuitively, the confidence level used to generate a confidence interval seems 
+as though it should represent the probability that the parameter is contained 
+inside, but this is not the case. Once the interval is generated, the 
+probability that the estimate is inside is 0 or 1. This misconception resurfaced 
+in section 4 when we discussed credible intervals, the Bayesian analogue to 
+confidence intervals. With a credible interval, the credible level does 
+represent the probability that the estimate falls between the specified range, 
+making it easier to interpret. In the fourth mini-project, a 90% credible 
+interval for the proportion of serves where a clay-court tennis player scores a 
+point was calculated, so the ranges reported represent a 90% probability that 
+the proportion of interest falls inside them. 
+
+<hr>
+This fourth mini-project covered Bayesian statistics, and the goal was to 
+construct three prior distributions and find their associated posterior 
+distributions representing the proportion of serves where the clay court tennis
+player, Rafael Nadal, scores a point against his rival, Novak Djokovic, during 
+the French Open. Two prior distributions were informative, meaning their 
+construction required incorporating previous data or beliefs. Incorporating 
+prior information into a statistical analysis is a common practice and 
+frequently came up in the course. For instance, the STAT 113 example in section 
+5 cites 53 dollars as the national average for a haircut in the US based on an 
+online survey. We then investigated if the average haircut cost for SLU students
+differs by using the survey information to construct a null hypothesis (the 
+average cost is 53 dollars) and an alternative hypothesis (the average cost is 
+not 53 dollars). Say we also use another source to determine that NY state has a 
+high cost of living, we could incorporate this information by conducting a 
+right-tail test rather than a two-tailed test. Furthermore, calculating order 
+statistics or finding the maximum likelihood estimator for a setting with 
+multiple random variables is contingent on knowing that the random variables 
+involved are independent and identically distributed. It is also important to 
+assess whether prior information contains bias, a key term included in the 
+second mini-project. The prior distribution based on the sports announcer’s
+beliefs likely contained bias because the center of its posterior distribution
+differed greatly from the others. 
+
+<hr>
+The fifth and final mini-project covered hypothesis testing and tasked me with 
+reflecting on a research article discussing the advantages and drawbacks of 
+using p-values in science. The article argues that researchers rely too heavily
+on obtaining p-values below 0.05 to determine whether the results of their 
+research are “significant,” undermining statistical thinking. Statistical 
+thinking can be defined as the thought process behind experimental design, such
+as using information and beliefs to construct an informative prior distribution, 
+as was done in the fourth mini-project. The p-value is essentially treated as 
+though it inherently contains information about whether results are worth caring 
+about, which is not the case. If it were, Type I & II errors wouldn’t exist, and 
+the p-value wouldn’t fluctuate depending on the distribution chosen for the test 
+statistic (in homework #9, it was shown that selecting the normal distribution 
+leads to a smaller p-value than selecting the t-distribution). Additionally, the 
+article mentions replacing the word “confidence” with “compatibility” to address 
+the common misconception that arises, referenced in section 3.
+
+<hr>
+Overall, the mini-projects allowed me to think critically about the course’s 
+content and not only apply my learning, but also pick up on new details. My 
+biggest takeaways from each mini-project are as follows. First, the shape of a 
+sampling distribution allows one to make conclusions about what the relationship 
+between some statistics should be (e.g. for symmetric distributions, the 
+standard errors for the maximum and the minimum are very close). Second, the 
+ability to use the course’s language outside of a formal classroom fosters a
+deeper understanding. My fictional story would not have made sense had I not 
+taken the time to digest what the terms I used meant in a broader context. In 
+other words, application and understanding of a topic are separate entities. 
+Third, statistical simulation is often used to determine the frequency of an 
+event’s occurrence. For instance, I investigated how different simulation 
+settings influenced coverage rate, the frequency an estimate was “caught” in the 
+generated interval. Later in the course, it was discussed how statistical
+simulation can be used to calculate empirical power, the frequency the null 
+hypothesis is rejected. Fourth, it is important to identify when prior 
+information can create bias in statistical analyses. The prior distribution 
+constructed based on the sports announcers' beliefs turned out to be biased, 
+which is unsurprising because it came from personal beliefs rather than previous 
+data. Finally, it is often useful to outline statistical thinking in a formal 
+analysis and approach a question from multiple angles rather than relying on the
+p-value from a single hypothesis test. 
