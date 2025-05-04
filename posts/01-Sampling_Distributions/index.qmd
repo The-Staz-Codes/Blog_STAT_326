@@ -5,6 +5,7 @@ format:
   html:
     embed-resources: true
 editor: visual
+image: "image_for_thumbnail.png"
 ---
 
 **Sampling Distribution of the Sample Minimum and Maximum**

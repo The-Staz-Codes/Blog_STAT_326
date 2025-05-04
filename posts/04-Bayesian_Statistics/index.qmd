@@ -5,6 +5,7 @@ format:
   html:
     embed-resources: true
 editor: visual
+image: "image_for_thumbnail.png"
 ---
 
 **Bayesian Analysis**
